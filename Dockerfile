@@ -6,8 +6,10 @@ RUN apk update && \
   apk upgrade && \
   apk add \
   bash \
-  curl \
   ca-certificates \
+  coreutils \
+  curl \
+  perl \
   tar
 
 # Install Java
@@ -15,7 +17,11 @@ RUN apk add openjdk8
 ENV PATH=$PATH:/usr/lib/jvm/default-jvm/bin/
 
 # Install Scala & Sbt
-RUN curl --location --output sbt-0.13.15.tgz --verbose https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz
+RUN mkdir /downloads
+WORKDIR /downloads
+RUN curl --location --output /downloads/sbt-0.13.15.tgz --show-error --silent https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz
+COPY sbt-0.13.15.tgz.sha256 /downloads
+RUN sha256sum --check /downloads/sbt-0.13.15.tgz.sha256
 
 # Install Elm
 
