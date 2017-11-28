@@ -54,7 +54,7 @@ RUN curl --location --remote-name --show-error --silent https://nodejs.org/dist/
   sha256sum --check node-v${NODEJS_VERSION}.tar.gz.sha256 && \
   tar xf node-v${NODEJS_VERSION}.tar.gz && \
   cd node-v${NODEJS_VERSION} && \
-  ./configure && \
+  ./configure --fully-static && \
   make && \
   make install
 
