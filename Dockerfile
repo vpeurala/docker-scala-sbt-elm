@@ -5,7 +5,10 @@ FROM alpine:3.6
 RUN apk update && \
   apk upgrade && \
   apk add \
-  bash
+  bash \
+  curl \
+  ca-certificates \
+  tar
 
 # Install Java
 
