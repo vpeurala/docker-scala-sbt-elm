@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "",
-    "repository": "https://github.com/user/project.git",
+    "summary": "Some useful Elm libraries.",
+    "repository": "https://github.com/vpeurala/docker-scala-sbt-elm.git",
     "license": "BSD3",
     "source-directories": [
         "."

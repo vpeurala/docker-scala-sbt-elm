@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
     version := "1.0"
   )
 
-resolvers += "DefaultMavenRepository" at https://repo1.maven.org/maven2/
+resolvers += "DefaultMavenRepository" at "https://repo1.maven.org/maven2/"
 resolvers += "Flyway" at "https://flywaydb.org/repo"
 resolvers += "Sonatype OSS Public" at "https://oss.sonatype.org/content/repositories/public/"
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

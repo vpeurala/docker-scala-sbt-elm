@@ -36,12 +36,12 @@ ENV PATH=$PATH:/downloads/sbt/bin
 ENV PATH=$PATH:/downloads/scala-2.11.11/bin
 COPY warmup /warmup
 WORKDIR /warmup
-RUN mkdir -p /root/.ivy2/local/org.scala-sbt/sbt/1.13.15/jars
-RUN cp /downloads/sbt/lib/local-preloaded/org.scala-sbt/sbt/0.13.15/jars/sbt.jar /root/.ivy2/local/org.scala-sbt/sbt/1.13.15/jars/sbt.jar
+RUN mkdir -p /root/.ivy2/local/org.scala-sbt/sbt/0.13.15/jars
+RUN cp -R /downloads/sbt/lib/local-preloaded/* /root/.ivy2/local/
 RUN sbt update
 
 # Install Elm
-# WORKDIR /downloads
-# RUN npm install -g elm
-# WORKDIR /warmup
-# RUN elm-package install
+WORKDIR /downloads
+RUN npm install -g elm
+WORKDIR /warmup
+RUN elm-package install
