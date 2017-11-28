@@ -9,6 +9,8 @@ RUN apk update && \
   coreutils \
   curl \
   findutils \
+  nodejs \
+  nodejs-npm \
   perl \
   tar
 
@@ -30,3 +32,4 @@ RUN sbt update
 
 # Install Elm
 WORKDIR /downloads
+RUN npm install -g elm
