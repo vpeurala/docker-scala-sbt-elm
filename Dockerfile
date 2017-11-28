@@ -1,7 +1,6 @@
 FROM alpine:3.6
 
 # Install needed apk packages
-
 RUN apk update && \
   apk upgrade && \
   apk add \
@@ -30,3 +29,4 @@ WORKDIR /warmup
 RUN sbt update
 
 # Install Elm
+WORKDIR /downloads
