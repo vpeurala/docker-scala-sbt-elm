@@ -9,6 +9,7 @@ RUN apk update && \
   ca-certificates \
   coreutils \
   curl \
+  findutils \
   perl \
   tar
 
@@ -24,6 +25,7 @@ COPY sbt-0.13.15.tgz.sha256 /downloads
 RUN sha256sum --check /downloads/sbt-0.13.15.tgz.sha256
 RUN tar xf sbt-0.13.15.tgz
 ENV PATH=$PATH:/downloads/sbt/bin
+RUN sbt
 
 # Install Elm
 
