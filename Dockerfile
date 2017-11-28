@@ -22,16 +22,26 @@ ENV PATH=$PATH:/usr/lib/jvm/default-jvm/bin/
 RUN mkdir /downloads
 WORKDIR /downloads
 RUN curl --location --output /downloads/sbt-0.13.15.tgz --show-error --silent https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz
+RUN curl --location --output /downloads/scala-2.11.11.tgz --show-error --silent https://downloads.lightbend.com/scala/2.11.11/scala-2.11.11.tgz
 COPY sbt-0.13.15.tgz.sha256 /downloads
+COPY scala-2.11.11.tgz.sha256 /downloads
+
 RUN sha256sum --check /downloads/sbt-0.13.15.tgz.sha256
+RUN sha256sum --check /downloads/scala-2.11.11.tgz.sha256
+
 RUN tar xf sbt-0.13.15.tgz
+RUN tar xf scala-2.11.11.tgz
+ENV SCALA_HOME=/downloads/scala-2.11.11/lib
 ENV PATH=$PATH:/downloads/sbt/bin
+ENV PATH=$PATH:/downloads/scala-2.11.11/bin
 COPY warmup /warmup
 WORKDIR /warmup
+RUN mkdir -p /root/.ivy2/local/org.scala-sbt/sbt/1.13.15/jars
+RUN cp /downloads/sbt/lib/local-preloaded/org.scala-sbt/sbt/0.13.15/jars/sbt.jar /root/.ivy2/local/org.scala-sbt/sbt/1.13.15/jars/sbt.jar
 RUN sbt update
 
 # Install Elm
-WORKDIR /downloads
-RUN npm install -g elm
-WORKDIR /warmup
-RUN elm-package install
+# WORKDIR /downloads
+# RUN npm install -g elm
+# WORKDIR /warmup
+# RUN elm-package install
