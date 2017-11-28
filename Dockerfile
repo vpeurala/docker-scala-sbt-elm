@@ -33,3 +33,5 @@ RUN sbt update
 # Install Elm
 WORKDIR /downloads
 RUN npm install -g elm
+WORKDIR /warmup
+RUN elm-package install
