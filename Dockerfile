@@ -25,9 +25,8 @@ COPY sbt-0.13.15.tgz.sha256 /downloads
 RUN sha256sum --check /downloads/sbt-0.13.15.tgz.sha256
 RUN tar xf sbt-0.13.15.tgz
 ENV PATH=$PATH:/downloads/sbt/bin
-RUN sbt
+COPY warmup /warmup
+WORKDIR /warmup
+RUN sbt update
 
 # Install Elm
-
-
-
