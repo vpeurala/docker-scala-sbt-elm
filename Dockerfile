@@ -51,21 +51,10 @@ RUN asdf plugin-add elm && \
   asdf global sbt ${SBT_VERSION} && \
   asdf global scala ${SCALA_VERSION}
 
-# ENV SBT_HOME=/downloads/sbt
-# ENV PATH=$PATH:${SBT_HOME}/bin
-# ENV SCALA_HOME=/downloads/scala-${SCALA_VERSION}
-# ENV PATH=$PATH:${SCALA_HOME}/bin
-
 # Fill the caches
-# COPY warmup /warmup
-# WORKDIR /warmup
-# RUN mkdir -p /root/.ivy2/local
-# RUN cp -R /downloads/sbt/lib/local-preloaded/* /root/.ivy2/local/
-# RUN sbt update
+COPY warmup /warmup
+WORKDIR /warmup
+RUN sbt update
 # Sometimes this is left after `sbt update`: a bug in sbt, maybe?
-# RUN rm -rf /root/.ivy2/.sbt.ivy.lock
-
-# Install Elm
-
-# RUN npm install -g elm
-# RUN elm-package install
+RUN rm -rf /root/.ivy2/.sbt.ivy.lock
+RUN elm-package install -y
