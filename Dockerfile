@@ -58,3 +58,16 @@ RUN sbt update
 # Sometimes this is left after `sbt update`: a bug in sbt, maybe?
 RUN rm -rf /root/.ivy2/.sbt.ivy.lock
 RUN elm-package install -y
+
+# Install Chrome
+RUN apt-get -y install fonts-liberation && \
+  apt-get -y install gconf-service && \
+  apt-get -y install libappindicator1 && \
+  apt-get -y install libgconf-2-4 && \
+  apt-get -y install libgtk-3-0 && \
+  apt-get -y install libxss1 && \
+  apt-get -y install lsb-release && \
+  apt-get -y install wget && \
+  apt-get -y install xdg-utils
+RUN curl --location --remote-name --show-error --silent https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb
