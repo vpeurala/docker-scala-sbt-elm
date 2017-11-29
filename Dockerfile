@@ -47,9 +47,6 @@ ENV PATH=$PATH:${SCALA_HOME}/bin
 
 # Install NodeJS 8.9.1
 WORKDIR /downloads
-RUN curl --location --remote-name --show-error --silent https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz && \
-  sha256sum --check node-v${NODEJS_VERSION}-linux-x64.tar.gz.sha256 && \
-  tar xf node-v${NODEJS_VERSION}-linux-x64.tar.gz
 RUN curl --location --remote-name --show-error --silent https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}.tar.gz && \
   sha256sum --check node-v${NODEJS_VERSION}.tar.gz.sha256 && \
   tar xf node-v${NODEJS_VERSION}.tar.gz && \
@@ -58,13 +55,13 @@ RUN curl --location --remote-name --show-error --silent https://nodejs.org/dist/
   make && \
   make install
 
-# Install Elm
-RUN npm install -g elm
-
 # Fill the caches
 COPY warmup /warmup
 WORKDIR /warmup
 RUN mkdir -p /root/.ivy2/local
 RUN cp -R /downloads/sbt/lib/local-preloaded/* /root/.ivy2/local/
 RUN sbt update
-RUN elm-package install
+
+# Install Elm
+# RUN npm install -g elm
+# RUN elm-package install
