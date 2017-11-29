@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM imvu/alpine-ghc:7.10.3
 
 ENV NODEJS_VERSION=8.9.1
 ENV SBT_VERSION=0.13.15
@@ -61,7 +61,10 @@ WORKDIR /warmup
 RUN mkdir -p /root/.ivy2/local
 RUN cp -R /downloads/sbt/lib/local-preloaded/* /root/.ivy2/local/
 RUN sbt update
+# Sometimes this is left after `sbt update`: a bug in sbt, maybe?
+RUN rm -rf /root/.ivy2/.sbt.ivy.lock
 
 # Install Elm
+
 # RUN npm install -g elm
 # RUN elm-package install
