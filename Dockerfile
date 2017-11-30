@@ -78,3 +78,5 @@ RUN apt-get -y install bison \
   python \
   ruby \
   ttf-mscorefonts-installer
+
+ENV QT_QPA_PLATFORM=offscreen
