@@ -11,12 +11,14 @@ resolvers += "Flyway" at "https://flywaydb.org/repo"
 resolvers += "Sonatype OSS Public" at "https://oss.sonatype.org/content/repositories/public/"
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 resolvers += Resolver.sbtPluginRepo("releases")
+resolvers += "jitpack.io" at "https://jitpack.io"
 
 libraryDependencies ++= Seq(
   ehcache,
   guice,
   jdbc,
   ws,
+  "com.github.detro" % "ghostdriver" % "2.1.0",
   "com.google.code.gson" % "gson" % "2.8.2",
   "com.google.inject" % "guice" % "4.1.0",
   "com.machinepublishers" % "jbrowserdriver" % "0.17.11",

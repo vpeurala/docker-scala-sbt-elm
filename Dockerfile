@@ -28,6 +28,7 @@ RUN apt-get -y install autoconf \
   libxslt-dev \
   libyaml-dev \
   openjdk-8-jdk \
+  openjfx \
   unixodbc-dev \
   vim
 
