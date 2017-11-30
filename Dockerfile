@@ -102,3 +102,5 @@ RUN apt-get -y install ca-certificates && \
 
 RUN curl --location --remote-name --show-error --silent https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb
+
+RUN apt-get -y install python2.7
