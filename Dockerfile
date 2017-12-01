@@ -15,7 +15,7 @@ RUN apt-get update && \
 
 RUN apt-get -y install locales
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
+ENV LANG=en_US.utf8
 
 RUN apt-get -y install autoconf \
   automake \
@@ -59,28 +59,7 @@ RUN sbt update
 RUN rm -rf /root/.ivy2/.sbt.ivy.lock
 RUN elm-package install -y
 
-# Install PhantomJS
-RUN apt-get -y install bison \
-  build-essential \
-  flex \
-  g++ \
-  gperf \
-  libfontconfig1-dev \
-  libfreetype6 \
-  libicu-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libsqlite3-dev \
-  libssl-dev \
-  libx11-dev \
-  libxext-dev \
-  perl \
-  phantomjs \
-  python \
-  ruby \
-  ttf-mscorefonts-installer
-
-ENV QT_QPA_PLATFORM=offscreen
-
+# Set Timezone
 RUN apt-get -y install tzdata
 RUN ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
+RUN echo "Europe/Helsinki" > /etc/timezone
