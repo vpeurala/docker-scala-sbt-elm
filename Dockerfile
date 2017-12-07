@@ -29,6 +29,7 @@ RUN apt-get -y install autoconf \
   libyaml-dev \
   openjdk-8-jdk \
   openjfx \
+  postgresql-client \
   unixodbc-dev \
   vim
 
