@@ -20,6 +20,7 @@ ENV LANG=en_US.utf8
 RUN apt-get -y install autoconf \
   automake \
   curl \
+  dnsutils \
   git \
   libffi-dev \
   libncurses-dev \
