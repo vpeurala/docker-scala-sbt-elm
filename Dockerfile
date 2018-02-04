@@ -6,7 +6,7 @@ ENV TERM linux
 SHELL ["/bin/bash", "-c"]
 
 ENV ELM_VERSION=0.18.0
-ENV SBT_VERSION=0.13.15
+ENV SBT_VERSION=0.13.16
 ENV SCALA_VERSION=2.11.11
 
 RUN apt-get update && \
