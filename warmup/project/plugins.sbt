@@ -6,3 +6,5 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.0")
 addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.2.0")
 addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.11")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
+

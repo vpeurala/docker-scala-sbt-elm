@@ -65,3 +65,4 @@ RUN elm-package install -y
 RUN apt-get -y install tzdata
 RUN ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 RUN echo "Europe/Helsinki" > /etc/timezone
+
